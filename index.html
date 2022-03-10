@@ -3,87 +3,32 @@
 <head>
 <title>Rhulk Chest Glyphs</title>
 <link rel="stylesheet" href="styles.css">
-
+<script src="index.js"></script>
 </head>
 <body>
 
 <h1>Totem Glyphs</h1>
 <p>Select the three glyphs shown on the totem right after entering the pyramid.</p>
 
-<input type="image" src="img/pyramid.png" onclick="location_header('before_first','pyramid'); toggle_div('pyramid')" height="130" width="104"/>
-<input type="image" src="img/give.png" onclick="location_header('before_first','give'); toggle_div('give')" height="130" width="104"/>
-<input type="image" src="img/darkness.png" onclick="toggle_div('darkness')" height="130" width="104"/>
-<input type="image" src="img/traveler.png" onclick="toggle_div('traveler')" height="130" width="104"/>
-<input type="image" src="img/worship.png" onclick="toggle_div('worship')" height="130" width="104"/>
-<input type="image" src="img/light.png" onclick="location_header('before_third','light'); toggle_div('light')" height="130" width="104"/>
-<input type="image" src="img/stop.png" onclick="location_header('before_third','stop'); toggle_div('stop')" height="130" width="104"/>
-<input type="image" src="img/guardian.png" onclick="location_header('before_fourth','guardian'); toggle_div('guardian')" height="130" width="104"/>
-<input type="image" src="img/kill.png" onclick="location_header('before_fourth','kill'); toggle_div('kill')" height="130" width="104"/>
+<input type="image" class="normal" id="pyramid_btn" src="img/pyramid.png" onclick="location_header('before_first','pyramid'); toggle_div('pyramid')" />
+<input type="image" class="normal" id="give_btn" src="img/give.png" onclick="location_header('before_first','give'); toggle_div('give')" />
+<input type="image" class="normal" id="darkness_btn" src="img/darkness.png" onclick="toggle_div('darkness')" />
+<input type="image" class="normal" id="traveler_btn" src="img/traveler.png" onclick="toggle_div('traveler')" />
+<input type="image" class="normal" id="worship_btn" src="img/worship.png" onclick="toggle_div('worship')" />
+<input type="image" class="normal" id="light_btn" src="img/light.png" onclick="location_header('before_third','light'); toggle_div('light')" />
+<input type="image" class="normal" id="stop_btn" src="img/stop.png" onclick="location_header('before_third','stop'); toggle_div('stop')" />
+<input type="image" class="normal" id="guardian_btn" src="img/guardian.png" onclick="location_header('before_fourth','guardian'); toggle_div('guardian')" />
+<input type="image" class="normal" id="kill_btn" src="img/kill.png" onclick="location_header('before_fourth','kill'); toggle_div('kill')"/>
 
 </body>
 </html> <h1>Room Locations</h1>
 <p>Go to the three locations shown below.
     At each location, shoot the darkness shard to open the room,
     enter the room and shoot the glyph at the back once.
-    If all three required glyphs are activated, 
+    If all three required glyphs are activated,
     defeating Rhulk will drop a guaranteed Deepsight weapon 
     on your first run per week.
 </p>
-
-<script>
-var fac = {
-    pyramid: 1,
-    give: 1,
-    darkness: 1,
-    traveler: 1,
-    worship: 1,
-    light: 1,
-    stop: 1,
-    guardian: 1,
-    kill: 1
-};
-var counter = {
-    before_first: 0,
-    before_third: 0,
-    before_fourth: 0,
-    num_glyphs: 0
-};
-var state = {
-    before_first: -1,
-    before_third: -1,
-    before_fourth: -1
-}; 
-const chosen_glyphs = [];
-
-function toggle_div(glyph) {
-    if (counter["num_glyphs"] < 3 || fac[glyph] == -1) {
-        var x = document.getElementById(glyph);
-        counter["num_glyphs"] += fac[glyph];
-
-        if (x.style.display === "none") {
-        x.style.display = "block";
-        fac[glyph] *= -1
-        } else {
-        fac[glyph] *= -1
-        x.style.display = "none";
-        }
-    }
-} 
-
-function location_header(area, glyph) {
-    if (counter["num_glyphs"] < 3 || fac[glyph] == -1) {
-        counter[area] += fac[glyph];
-        if (state[area]  == 1 && counter[area] < 1) {
-            document.getElementById(area).style.display = "none";
-            state[area] *= -1
-        }
-        else if (state[area]  == -1 && counter[area] > 0) {
-            document.getElementById(area).style.display = "block";
-            state[area] *= -1
-        }
-    }
-}
-</script>
 
 <div id="before_first" style="display:none">
     <h2>Between Opening and First Encounter</h2>
@@ -102,7 +47,7 @@ function location_header(area, glyph) {
         <img src="img/give.png"  width="26" height="32">
         Give 
     </h3>
-    <p>After the room with all the symbols, you enter a blue-ish lit room. Look straight ahead</p>
+    <p>After the room with all the symbols, you enter a blue-ish lit room. Look straight ahead.</p>
 </div>
 
 <div id="darkness" style="display:none">
@@ -129,7 +74,7 @@ function location_header(area, glyph) {
         <img src="img/worship.png"  width="26" height="32">
         Worship 
     </h3>
-    <p>After killing The Caretaker, in the final stand room, look on the wall to find the shard. The door is on the opposite side (forgot if I mixed the door and shard but they're on opposite sides).</p>
+    <p>After killing The Caretaker, in the final stand room, look on the wall to find the shard. The door is on the opposite side.</p>
 </div>
 
 <div id="before_third" style="display:none">
